@@ -27,11 +27,11 @@ public class Scraper {
                 .select("h3.r")
                 .select("a")
                 .stream()
-                .map(link -> {
+                .map(link ->
                     new Link(
-                        decodeURL(link.attr("href").substring(7), link.attr("href").indexOf('&')),
+                        decodeURL(link.attr("href").substring(7, link.attr("href").indexOf('&'))),
                         link.text())
-                })
+                )
                 .collect(Collectors.toList());
         }
         catch (IOException err) {
